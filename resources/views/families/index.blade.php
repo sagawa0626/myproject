@@ -9,7 +9,7 @@
         <div class="card-body">
             <p class="lead">それぞれの該当する家族からお入りくださいませ<br>
             ※家族に入る際はパスワードが必要となります<br>
-            また下のボタンにより新たに家族を作成する事もできます<br>
+            また下のボタンにより新たに家族を作成する事もできますよ<br>
             </p>
             <a class="btn btn-primary" href="#" role="button">新規で家族を作成する</a>
         </div>
