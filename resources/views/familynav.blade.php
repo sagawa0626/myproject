@@ -19,15 +19,6 @@
         @endguest
 
         @auth
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('posts.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/posts/show"><i class="fas fa-images"></i>アルバムを見る</a>
-        </li>
-        @endauth
-
-        @auth
         <!-- Dropdown -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"

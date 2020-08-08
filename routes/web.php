@@ -16,11 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/posts/show', 'PostController@show')->middleware('auth');
-Route::get('/', 'PostController@index')->name('posts.index')->middleware('auth');
+Route::get('/posts/index', 'PostController@index')->name('posts.index')->middleware('auth');
 Route::resource('/posts', 'PostController')->except(['index'])->middleware('auth');
 
 Route::post('/posts/{comment_id}/comments', 'CommentsController@store');
 Route::get('/comments/{comment_id}', 'CommentsController@destory');
+
+Route::get('/', 'FamilyController@index')->middleware('auth');
 
 
 

@@ -60,7 +60,7 @@ class PostController extends Controller
         $post->fill($form);
         $post->save();
 
-        return redirect('/');
+        return redirect()->route('posts.index');
     }
 
     public function edit(Post $post)
