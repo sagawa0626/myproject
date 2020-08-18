@@ -5,23 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use App\Family;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->authorizeResource(Post::class, 'post');
-    // }
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::limit(10000)
-            ->orderBy('created_at', 'desc')
-            ->get();
-        return view('posts.index', ['posts' => $posts]);
+        $family = Family::find($request->family_id);
+        $user = Auth::user();
+        $user->family_id = $request->family_id;
+        $user->save();
+        
+        $users = User::get();
+
+        return view('posts.index', ['family' => $family, 'users' => $users]);
     }
 
     public function create()
@@ -59,8 +61,9 @@ class PostController extends Controller
 
         $post->fill($form);
         $post->save();
+        
 
-        return redirect()->route('posts.index');
+        return view('posts.index', ['family' => $family]);
     }
 
     public function edit(Post $post)

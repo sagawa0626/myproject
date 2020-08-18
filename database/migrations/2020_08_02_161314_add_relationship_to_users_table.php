@@ -14,7 +14,7 @@ class AddRelationshipToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('relationship');
+            $table->string('relationship')->nullable();
         });
     }
 

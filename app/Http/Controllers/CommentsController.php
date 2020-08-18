@@ -23,13 +23,13 @@ class CommentsController extends Controller
         $comment->user_id = Auth::user()->id;
         $comment->save();
 
-        return redirect('/');
+        return redirect('/posts/index');
     }
 
     public function destory(Request $request)
     {
         $comment = Comment::find($request->comment_id);
         $comment->delete();
-        return redirect('/');
+        return redirect('/posts/index');
     }
 }

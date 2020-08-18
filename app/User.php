@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
@@ -37,6 +38,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     public function posts()
     {
         return $this->hasMany('App\Post');
@@ -46,4 +48,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function familiy(): BelongsTo
+    {
+        return $this->belongsTo('App\Family');
+    }
+
+    
 }

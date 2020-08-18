@@ -25,6 +25,9 @@
         <li class="nav-item">
             <a class="nav-link" href="/posts/show"><i class="fas fa-images"></i>アルバムを見る</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href=""><i class="fas fa-book-reader"></i>家族の近況を見る</a>
+        </li>
         @endauth
 
         @auth

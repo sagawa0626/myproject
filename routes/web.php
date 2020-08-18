@@ -23,6 +23,9 @@ Route::post('/posts/{comment_id}/comments', 'CommentsController@store');
 Route::get('/comments/{comment_id}', 'CommentsController@destory');
 
 Route::get('/', 'FamilyController@index')->middleware('auth');
+Route::get('/families/create', 'FamilyController@create')->name('families.create');
+Route::post('/families/store', 'FamilyController@store')->name('families.store');
+
 
 
 
