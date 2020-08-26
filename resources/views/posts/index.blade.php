@@ -6,8 +6,7 @@
     @include('nav')
         <div class="col-md-5 col-md-5 mx-auto">
             @foreach($users as $user)
-                @if($family->id === $user->family_id)
-                    @foreach($user->posts as $post)
+                    @foreach($user->posts()->orderBy('created_at', 'desc')->get() as $post)
                         <div class="card mt-4">
                             <div class="card-body d-flex flex-row">
                                     @if($user->profile_photo)
@@ -97,7 +96,7 @@
                                     </post-like>
                                 </div>
                                 <div id="comment-post-{{ $post->id }}">
-                                    @foreach ($post->comments as $comment)
+                                    @foreach ($post->comments()->orderBy('created_at', 'desc')->get() as $comment)
                                         <div class="mb-2">
                                             <span>
                                                 <strong>
@@ -126,7 +125,6 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
             @endforeach
         </div>
 @endsection

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     protected $fillable = ['title', 'body'];
+    
     public function user(): BelongsTo
     {
         return $this->belongsTo('App\User');

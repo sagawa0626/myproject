@@ -30,7 +30,7 @@
                                 <div class="md-form">
                                     <label for="password_confirmation">もう一度パスワードを入力してください</label>
                                     <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" required>
-                                </div>  
+                                </div>    
                                 <button class="btn btn-block blue-gradient mt-2 md-2" type="submit">ユーザー登録</button>
                             </form>
 

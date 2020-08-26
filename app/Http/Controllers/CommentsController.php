@@ -7,6 +7,7 @@ use App\Comment;
 use App\Post;
 use Auth;
 use Validator;
+use App\User;
 
 class CommentsController extends Controller
 {
@@ -23,13 +24,13 @@ class CommentsController extends Controller
         $comment->user_id = Auth::user()->id;
         $comment->save();
 
-        return redirect('/posts/index');
+        return redirect()->route('posts.index');
     }
 
     public function destory(Request $request)
     {
         $comment = Comment::find($request->comment_id);
         $comment->delete();
-        return redirect('/posts/index');
+        return redirect()->route('posts.index');
     }
 }

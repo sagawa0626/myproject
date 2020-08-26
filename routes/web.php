@@ -27,7 +27,10 @@ Route::get('/families/create', 'FamilyController@create')->name('families.create
 Route::post('/families/store', 'FamilyController@store')->name('families.store');
 
 
-
+Route::get('/invitation', 'InvitationController@index')->middleware('auth')->name('invitation.index');
+Route::post('/invitation/create', 'InvitationController@create')->name('invitation.create');
+Route::get('/invitation/recieve/{token}', 'InvitationController@recieve')->name('invitation.recieve');
+Route::post('/invitation/register', 'InvitationController@register')->name('invitation.register');
 
 
 Route::get('/users/edit', 'UserController@edit');

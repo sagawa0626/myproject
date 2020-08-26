@@ -12,10 +12,16 @@ class FamilyController extends Controller
 {
     public function index()
     {
-        $families = Family::limit(100)
-            ->orderBy('created_at', 'desc')
-            ->get();
-        return view('families/index', ['families' => $families]);
+        $families = Family::where('id', Auth::user()->family_id)->get();
+        
+        // familiesのuser情報のemailと現在ログイン中のemailが一致していれば
+        // 招待ボタンを出現させる
+        $isHost = false;
+        if(isset($families, $families[0]->users[0]) && $families[0]->users[0]->email === Auth::user()->email) {
+            $isHost = true;
+        }
+
+        return view('families/index', ['families' => $families, 'isHost' => $isHost]);
     }
 
     public function create()
@@ -29,6 +35,10 @@ class FamilyController extends Controller
         $families->family_name = $request->family_name;
         $families->family_password = $request->family_password;
         $families->save();
+
+        $user = User::find(Auth::id());
+        $user->family_id = $families->id;
+        $user->save();
         
         return redirect('/');
     }

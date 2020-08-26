@@ -3,19 +3,21 @@
     <a class="navbar-brand" href="/"><i class="fas fa-home"></i>
         fam(ホーム画面に戻る)
     </a>
+    @auth
+        <a class="navbar-brand" href="/users/{{ Auth::user()->id }}">
+            ようこそ！ <u>{{ Auth::user()->name }}</u> さん
+        </a>
+    @endauth
 
     <ul class="navbar-nav ml-auto">
 
         @guest
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
-        </li>
-        @endguest
-
-        @guest
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">ログイン</a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+            </li>
         @endguest
 
         @auth
@@ -26,7 +28,7 @@
             <a class="nav-link" href="/posts/show"><i class="fas fa-images"></i>アルバムを見る</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=""><i class="fas fa-book-reader"></i>家族の近況を見る</a>
+            <a class="nav-link" href="{{ route('posts.index') }}"><i class="fas fa-book-reader"></i>家族の近況を見る</a>
         </li>
         @endauth
 

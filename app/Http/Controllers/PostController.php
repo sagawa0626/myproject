@@ -14,16 +14,11 @@ use App\Http\Requests\PostRequest;
 class PostController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
-        $family = Family::find($request->family_id);
-        $user = Auth::user();
-        $user->family_id = $request->family_id;
-        $user->save();
-        
-        $users = User::get();
+        $users = User::where('family_id', '=', Auth::user()->family_id)->get();
 
-        return view('posts.index', ['family' => $family, 'users' => $users]);
+        return view('posts.index', ['users' => $users]);
     }
 
     public function create()
@@ -60,10 +55,9 @@ class PostController extends Controller
         unset($form['image']);
 
         $post->fill($form);
-        $post->save();
-        
+        $post->save(); 
 
-        return view('posts.index', ['family' => $family]);
+        return redirect()->route('posts.index');
     }
 
     public function edit(Post $post)
@@ -85,6 +79,7 @@ class PostController extends Controller
         }
         unset($post_form['_token']);
         $post_data->fill($post_form)->save();
+       
         return redirect()->route('posts.index');
     }
 
@@ -118,7 +113,8 @@ class PostController extends Controller
 
     public function show()
     {
-        $posts = Post::get();
-        return view('posts.show', ['posts' => $posts]);
+        $users = User::where('family_id', '=', Auth::user()->family_id)->get();
+
+        return view('posts.show', ['users' => $users]);
     }
 }
