@@ -98,6 +98,13 @@
                                 <div id="comment-post-{{ $post->id }}">
                                     @foreach ($post->comments()->orderBy('created_at', 'desc')->get() as $comment)
                                         <div class="mb-2">
+                                            @if ($comment->user->id == Auth::user()->id)
+                                                <div class="float-right">
+                                                    <a class="delete-comment" data-remote="true" rel="nofollow" data-method="delete" href="/comments/{{ $comment->id }}">
+                                                        <button type="button" class="btn btn-outline-danger btn-sm">コメントを削除</button>
+                                                    </a>
+                                                </div>
+                                            @endif
                                             <span>
                                                 <strong>
                                                     <a class="no-text-decoration black-color" href="/users/{{ $comment->user->id }}">{{ $comment->user->name }}</a>
