@@ -4,47 +4,53 @@
 
 @section('content')
     @include('familynav')
-    <div class="card">
-        <h2 class="card-header text-center">素晴らしい家族一覧</h2>
-        <div class="card-body text-center">
-            <p class="lead">それぞれの該当する家族からお入りくださいませ<br>
-            また下のボタンにより新たに家族を作成する事もできます<br>
-            </p>
-            <a class="btn btn-primary" href="{{ route('families.create') }}" role="button">新規で家族を作成する</a>
+    @foreach($families as $family)
+        <div class="card">
+            <h1 class="card-header text-center"><strong>fam!!</strong>の世界へようこそ!!</h1>
+            <div class="card-body text-center">
+                    <a class="btn btn-primary" href="{{ route('families.create') }}" role="button">新規で家族を作成する</a>
+            </div>
         </div>
-        @foreach($families as $family)
-            <div class="container" style="margin-top:15px;">
-                <div class="col-md-14">
-                    <div class="card">
-                        <div class="card-block">
-                            <table class="table mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>家族名</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="lead">{{ $family->family_name }}</td>
-                                        <td class="text-right">
-                                            <a class="btn btn-lg btn-primary" href="{{ route('posts.index') }}" role="button">
-                                                所属家族のPOSTを見る
-                                            </a>
-                                        </td>
-                                        @if($isHost)
-                                            <td class="text-right">
-                                                <a class="btn btn-lg btn-info" href="{{ route('invitation.index') }}" role="button">
-                                                    招待する
-                                                </a>
-                                            </td>
-                                        @endif
-                                    </tr>
-                                </tbody>
-                            </table>
+    
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto">
+                    <div class="card card-cascade">
+                        <!-- Card image -->
+                        <div class="view view-cascade overlay">
+                            <img class="card-img-top" src="/images/house.jpg" alt="Card image cap">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center">
+                            <!-- Title -->
+                            <h2 class="card-title"><strong>{{ $family->family_name }}</strong></h2>
+                            <!-- Subtitle -->
+                            <p class="font-weight-bold indigo-text py-2">以下の左【この家族の家に入る】のボタンをクリックし入ってください</p>
+                            <!-- Text -->
+                            <a class="btn btn-lg btn-primary" href="{{ route('posts.index') }}" role="button">
+                                この家族の家に入る
+                            </a>
+                        </div>
+                        <div class="card-body card-body-cascade text-center">
+                            @if($isHost)
+                                <p class="font-weight-bold indigo-text py-2">
+                                    家族作成者のユーザーのみ新規に家族を招待できます
+                                </p>
+                                <a class="btn btn-lg btn-default" href="{{ route('invitation.index') }}" role="button">
+                                    新しい家族を招待する
+                                </a>
+                            @endif
+                        </div>
+                        <!-- Card footer -->
+                        <div class="card-footer text-muted text-center">
+                            この家が誕生した日にち {{ $family->created_at->format('Y/m/d')}}
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
 @endsection

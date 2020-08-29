@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="jumbotron text-center"
-        style="background:url(/images/holiday.jpg); 
+        style="background:url(/images/hands.jpg); 
         background-size: cover; 
         background-repeat: no-repeat; 
         background-attachment: fixed; 
