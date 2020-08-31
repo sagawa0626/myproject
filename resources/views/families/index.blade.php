@@ -28,7 +28,7 @@
                             <!-- Title -->
                             <h2 class="card-title"><strong>{{ $family->family_name }}</strong></h2>
                             <!-- Subtitle -->
-                            <p class="font-weight-bold indigo-text py-2">以下の左【この家族の家に入る】のボタンをクリックし入ってください</p>
+                            <p class="font-weight-bold indigo-text py-2">以下の【この家族の家に入る】のボタンをクリックし入ってください</p>
                             <!-- Text -->
                             <a class="btn btn-lg btn-primary" href="{{ route('posts.index') }}" role="button">
                                 この家族の家に入る

@@ -75,7 +75,7 @@
                                 @endif
                             </div>
                             <div class="card" style="width: 100%;">
-                                <img class="card-img-top" src="{{ asset('storage/image/' . $post->image_path) }}">
+                                <img class="card-img-top" src="{{ $post->image_path }}">
                             </div>
                             <div class="card-body pt-4 pb-2">
                                 <h3 class="h4 card-title">

@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\PostRequest;
+use Storage;
 
 class PostController extends Controller
 {
@@ -45,8 +46,8 @@ class PostController extends Controller
 
         if (isset($form['image'])) 
         {
-            $path = $request->file('image')->store('public/image');
-            $post->image_path = basename($path);
+            $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+            $post->image_path = Storage::disk('s3')->url($path);
         } else {
             $post->image_path = null;
         }
@@ -70,8 +71,8 @@ class PostController extends Controller
         $post_data = $post;
         $post_form = $request->all();
         if (isset($post_form['image'])) {
-            $path = $request->file('image')->store('public/image/');
-            $post_data->image_path = basename($path);
+            $path = Storage::disk('s3')->putFile('/', $post_form['image'], 'public');
+            $post_data->image_path = Storage::disk('s3')->url($path);
             unset($post_form['image']);
         }   elseif (isset($request->remove)) {
             $post_data->image_path = null;

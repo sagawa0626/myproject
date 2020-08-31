@@ -31,8 +31,8 @@
                             <div class="lead font-weight-lighter"><hr>
                                 {{ $post->created_at->format('Y/m/d') }} 
                             </div>
-                            <a href="{{ asset('storage/image/' . $post->image_path) }}" data-lightbox="group" data-title="{{ $post->title }}">
-                                <img class="card-img-top" style="height: 200; width: 300; display: inline-block; margin-bottom: 20px;" src="{{ asset('storage/image/' . $post->image_path) }}" alt="Thumbnail" data-holder-rendered="true">
+                            <a href="{{ $post->image_path }}" data-lightbox="group" data-title="{{ $post->title }}">
+                                <img class="card-img-top" style="height: 200; width: 300; display: inline-block; margin-bottom: 20px;" src="{{ $post->image_path }}" alt="Thumbnail" data-holder-rendered="true">
                             </a>
                         </div>
                     @endforeach
