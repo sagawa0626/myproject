@@ -6,6 +6,12 @@
 
 # DEMO
 
+http://laravel-fam.herokuapp.com/login
+
+テスト用ログイン<br>
+メールアドレス:testA@gmail.com<br>
+パスワード:11111111
+
 ・ログイン画面
 ![スクリーンショット 2020-08-26 17 38 00](https://user-images.githubusercontent.com/65385009/91281358-efbc7b00-e7c2-11ea-849c-39f7ce01bfaf.png)
 
@@ -15,6 +21,15 @@
 ・アルバム閲覧機能
 ![スクリーンショット 2020-08-27 17 35 22](https://user-images.githubusercontent.com/65385009/91417441-c156a280-e88b-11ea-97d8-a0143e62d177.png)
 
+* その他機能
+・新規ユーザーURL招待機能<br>
+・家族コミュニティ作成機能<br>
+・投稿に対してのイイネ機能<br>
+・投稿に対してのコメント機能<br>
+・プロフィールページと編集機能<br>
+
+
+
 
 # Features
 
@@ -23,10 +38,8 @@
 
 # Requirement
 
-"hoge"を動かすのに必要なライブラリなどを列挙する
-
 * Docker 19.03.12
-* Laravel 1.0.2
+* Laradock 1.0.2
 * laravel 7.18.0
 * Mysql 8.0.20
 
