@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Storage;
 
 class UserController extends Controller
 {
@@ -33,9 +34,11 @@ class UserController extends Controller
         $user = User::find($request->id);
         $user->name = $request->user_name;
         $user->relationship = $request->user_relationship;
+
         if($request->user_profile_photo !=null){
-            $request->user_profile_photo->storeAs('public/profile_images', $user->id.'.jpg');
-            $user->profile_photo = $user->id.'.jpg';
+            $image = $request->user_profile_photo;
+            $path = Storage::disk('s3')->putFileAs('/profile_images', $image, $user->id.'.jpg', 'public');
+            $user->profile_photo = Storage::disk('s3')->url($path);
         }
 
         $user->save();

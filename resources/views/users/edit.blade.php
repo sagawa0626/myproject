@@ -18,7 +18,7 @@
                             <label for="user_profile_photo">プロフィールの写真</label><br>
                             @if($user->profile_photo)
                                 <p>
-                                    <img width="50%" height="50%" src="{{ asset('storage/profile_images/' . $user->profile_photo) }}" alt="avatar" />
+                                    <img width="500px" height="500px" src="{{ $user->profile_photo }}" alt="avatar" />
                                 </p>
                             @endif
                             <input type="file" name="user_profile_photo" value="{{ old('user_profile_photo', $user->id) }}" accept="image/jpeg,image/gif,image/png" />
@@ -28,7 +28,7 @@
                             <input autofocus="autofocus" class="form-control" type="text" value="{{ old('user_name', $user->name) }}" name="user_name" />
                         </div>
                         <div class="form-group">
-                            <label for="user_relationship">あなたの家族の役割<label>
+                            <label for="user_relationship">あなたの家族の立ち位置<label>
                             <input autofocus="autofocus" class="form-control" type="text" value="{{ old('user_relationship', $user->relationship) }}" name="user_relationship" />
                         </div>
                         

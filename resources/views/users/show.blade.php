@@ -5,32 +5,43 @@
 @section('content')
     @include('nav')
     <div class="container">
-        <div class="card mt-3">
-            <div class="card-body">
-                <div class="d-flex flex-row">
-                    <a href="/users/{{ Auth::user()->id }}" class="text-dark">
-                        @if($user->profile_photo)
-                            <p>
-                                <img width="50%" height="50%" src="{{ asset('storage/profile_images/' . $user->profile_photo) }}" />
-                            </p>
-                            @else
-                                <i class="fas fa-user-circle fa-3x"></i>
-                        @endif
-                    </a>
-                </div>
-                <h2 class="h5 card-title m-0">
-                    <a href="/users/{{ Auth::user()->id }}" class="text-dark">
-                        名前：{{ $user->name }}
-                    </a>
+        <div class="row">
+            <div class="mx-auto">
+                <div class="card card-cascade">
+
+                    <!-- Card image -->
+                    <div class="view view-cascade overlay">
+                        <img width="500px" height="500px" class="card-img-top" src="{{ $user->profile_photo }}" alt="Card image cap">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                    </div>
+                    <div class="card-body card-body-cascade text-center">
+
+                    <!-- Title -->
+                    <h3 class="card-title"><strong>{{ $user->name }}</strong></h3>
                     <hr>
-                    <h3 class="h5 card-title m-0">
-                        この家族の役割：{{ $user->relationship }}
-                    </h3>
+                    <!-- Subtitle -->
+                    <h5 class="font-weight-bold indigo-text py-2">登録されているメールアドレス</h5>
+                    <p>{{ $user->email }}</p>
                     <hr>
-                    @if($user->id == Auth::user()->id)
-                        <a class="btn blue-gradient btn-block" href="/users/edit">プロフィールを編集</a>
+                    <h5 class="font-weight-bold indigo-text py-2">この家族の立ち位置</h5>
+                    @if($user->relationship)
+                        <p>{{ $user->relationship }}</p>
+                    @else
+                        <p class="text-danger">※まだ登録がされていません</p>
                     @endif
-                </h2>
+                    <hr>
+                    <!-- Text -->
+                    @if($user->id == Auth::user()->id)
+                        <p class="card-text">
+                            <a class="btn btn-lg btn-primary" href="/users/edit" role="button">プロフィール編集</a>
+                        </p>
+                    @endif
+
+
+
+                </div>
             </div>
         </div>
     </div>

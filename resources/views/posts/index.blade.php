@@ -11,7 +11,7 @@
                             <div class="card-body d-flex flex-row">
                                     @if($user->profile_photo)
                                         <a href="/users/{{ $post->user->id }}" class="text-dark">
-                                            <img class="post-profile-icon" src="{{ asset('storage/profile_images/' . $user->profile_photo) }}"/>
+                                            <img class="post-profile-icon" src="{{ $user->profile_photo }}"/>
                                         </a>
                                     @else
                                         <a href="/users/{{ $post->user->id }}" class="text-dark">
