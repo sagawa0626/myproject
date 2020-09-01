@@ -4,13 +4,13 @@
 
 @section('content')
     @include('familynav')
-    @foreach($families as $family)
-        <div class="card">
+    <div class="card">
             <h1 class="card-header text-center"><strong>fam!!</strong>の世界へようこそ!!</h1>
             <div class="card-body text-center">
                     <a class="btn btn-primary" href="{{ route('families.create') }}" role="button">新規で家族を作成する</a>
             </div>
-        </div>
+    </div>
+    @foreach($families as $family)
     
         <div class="container">
             <div class="row">
