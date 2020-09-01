@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark info-color">
+<nav class="navbar navbar-expand-lg navbar-dark info-color">
 
     <a class="navbar-brand" href="/"><i class="fas fa-home"></i>
         fam(ホーム画面に戻る)
