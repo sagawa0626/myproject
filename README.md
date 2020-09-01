@@ -9,8 +9,8 @@
 http://laravel-fam.herokuapp.com/login
 
 テスト用ログイン<br>
-メールアドレス:testA@gmail.com<br>
-パスワード:11111111
+メールアドレス:testB@gmail.com<br>
+パスワード:22222222
 
 ・ログイン画面
 ![スクリーンショット 2020-08-26 17 38 00](https://user-images.githubusercontent.com/65385009/91281358-efbc7b00-e7c2-11ea-849c-39f7ce01bfaf.png)
